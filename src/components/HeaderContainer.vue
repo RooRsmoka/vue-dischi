@@ -1,9 +1,9 @@
 <template>
-    <nav>
+    <header>
         <div class="logo">
             <img src="@/assets/spotify-logo.png">
-        </div>
-    </nav>    
+        </div>  
+    </header>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-nav {
+header {
     background-color: #2E3A46;
     height: 60px;
     display: flex;
