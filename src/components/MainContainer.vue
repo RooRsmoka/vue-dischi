@@ -1,11 +1,13 @@
 <template>
-    <div>
-        <album-card 
-        v-for="album in albums.response" 
-        :key="album.index"
-        :album="album"
-        />
-    </div>
+    <main>
+        <div class="albums-container container">
+            <album-card 
+            v-for="album in albums.response" 
+            :key="album.index"
+            :album="album"
+            />
+        </div>
+    </main>
 </template>
 
 <script>
@@ -21,5 +23,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main {
+    background-color: #1E2D3B;
+    padding: 60px 0;
 
+    .albums-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
 </style>
