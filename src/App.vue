@@ -1,34 +1,52 @@
 <template>
   <div id="app">
-    <header-container/>
-    <main-container :albums="albums"/>
+    <header-box/>
+    <select-box @search="filterGenre"/>
+    <app-loader v-if="!loaded"/>
+    <main-container v-else :albums="albumsFiltered"/>
   </div>
 </template>
 
 <script>
-import HeaderContainer from './components/HeaderContainer.vue'
+import HeaderBox from './components/HeaderBox.vue'
+import SelectBox from './components/SelectBox.vue'
+import AppLoader from './components/AppLoader.vue'
 import MainContainer from './components/MainContainer.vue'
 import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    HeaderContainer,
+    AppLoader,
+    HeaderBox,
+    SelectBox,
     MainContainer
   },
   data() {
     return {
-      albums: {}
+      albums: [],
+      albumsFiltered: [],
+      loaded: false
     }
   },
   mounted() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((result) => {
-      this.albums = result.data
+      this.albums = result.data.response
+      this.albumsFiltered = result.data.response
+      this.loaded = true
     })
+  },
+  methods: {
+    filterGenre(genre) {
+      this.albumsFiltered = this.albums.filter((album) =>{
+        return album.genre.toLowerCase() === genre || genre === 'all';
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import './style/common.scss';
+@import './style/variables.scss';
 </style>
