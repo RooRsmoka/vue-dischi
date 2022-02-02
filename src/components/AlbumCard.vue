@@ -20,8 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/style/variables.scss';
 .album-card {
-    background-color: #2E3A46;
+    background-color: $secondary-color;
     padding: 20px;
     margin: 10px 15px;
     width: calc(20% - 30px);
@@ -44,7 +45,7 @@ export default {
     .info {
         text-align: center;
         color: #808080;
-        padding: 20px 0;
+        padding: 10px 0;
     }
 }
 </style>
