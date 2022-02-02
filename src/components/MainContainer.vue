@@ -1,13 +1,13 @@
 <template>
-    <main>
+    <div class="app-container">
         <div class="albums-container container">
             <album-card 
-            v-for="album in albums.response" 
-            :key="album.index"
+            v-for="(album, index) in albums" 
+            :key="index"
             :album="album"
             />
         </div>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -17,15 +17,15 @@ export default {
         AlbumCard
     },
     props: {
-        albums: Object
+        albums: Array
     }
 }
 </script>
 
 <style lang="scss" scoped>
-main {
-    background-color: #1E2D3B;
-    padding: 60px 0;
+@import '@/style/variables.scss';
+.app-container {
+    background-color: $primary-color;
 
     .albums-container {
         display: flex;
